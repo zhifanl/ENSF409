@@ -1,0 +1,9 @@
+package exercise5_3;
+
+public class JavaStrings {
+
+	
+	public static void main(String[] args) {
+		String myString="ENSF 409 Principles of Software Development.";
+	}
+}

@@ -1,0 +1,40 @@
+/**
+@author    Zhifan Li <a href="mailto:zhifan.li@ucalgary.ca">zhifan.li@ucalgary.ca</a>
+@version   1.2
+@since     1.0
+*/
+/*
+Hello is a simple example program which prints the classic message:
+Hello, world
+*/
+
+public class Hello {
+   /**
+   This prints "Hello" to the terminal window and the contents of variables with 8 primitive data types.
+   @param args Optional command-line argument
+    */
+    public static void main (String[] args){
+    boolean aBoolean=true;
+    char aCharacter='a';
+    byte aByte=1;
+    short aShort=2;
+    int anInteger=409;
+    long aLong=3;
+    float aFloat=1;
+    double aDouble=12.3;
+    aDouble=anInteger; //automatic cast, aDouble expected to be 409.0
+    aDouble+=0.1;
+    anInteger=(int)aDouble;//explicit cast, anInteger expected to be 409
+
+        System.out.println("Hello, "+aBoolean);
+        System.out.println(aCharacter);
+        System.out.println(aByte);
+        System.out.println(aShort);
+        System.out.println(anInteger);
+        System.out.println(aLong);
+        System.out.println(aFloat);    
+        System.out.println(aDouble);
+        
+        
+    }
+} //End of class declaration

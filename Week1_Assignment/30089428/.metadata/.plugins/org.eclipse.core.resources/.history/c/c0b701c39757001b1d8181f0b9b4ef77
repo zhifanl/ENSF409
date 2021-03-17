@@ -1,0 +1,43 @@
+import org.junit.Test;
+
+/**
+@author    Zhifan Li <a href="mailto:zhifan.li@ucalgary.ca">zhifan.li@ucalgary.ca</a>
+@version   1.0
+@since     1.0
+*/
+/*
+class Animal
+*/
+public class Animal{
+    private int legs=4;
+    private String color;
+    public Animal(String color,int legs){
+        this.legs=legs;
+        this.color=color;
+    }
+    public Animal(String color){
+        this.color=color;
+    }
+    /** Return legs */
+    public int getLegs(){
+        return legs;}
+    /** 
+    @param legs A new value for legs
+     */
+    public void setLegs(int legs){
+        this.legs=legs;}
+    /** Return color
+     */
+    public String getColor(){
+        return color;}
+    /** 
+    @param color A new color */
+    public void setColor(String color){
+        this.color=color;
+    }
+
+@Test
+public void integer(int a) {}
+}
+// End of class declaration
+

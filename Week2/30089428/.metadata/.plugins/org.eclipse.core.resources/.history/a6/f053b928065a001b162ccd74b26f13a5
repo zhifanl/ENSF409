@@ -1,0 +1,70 @@
+/**
+@author    Zhifan Li <a href="mailto:zhifan.li@ucalgary.ca">zhifan.li@ucalgary.ca</a>
+@version   1.0
+@since     1.0
+ */
+package exercise4_1;
+import java.util.Arrays;
+
+public class SimpleArrays {
+
+	private String[]stringArray;
+
+	public SimpleArrays(String originalString) {
+		stringArray=new String[4];
+		Arrays.fill(stringArray, originalString);
+	}
+
+	public SimpleArrays() {
+		stringArray=new String[4];
+		Arrays.fill(stringArray, "Hello,ENSF 409");
+
+
+
+	}
+	public String arrayConcat() {
+		int index=0;
+		String concatenatedString=concatString(index,3);
+		return concatenatedString;
+	}
+	public String arrayConcat(int index) {
+		String concatenatedString=concatString(index,3);
+		return concatenatedString;
+	}
+
+	public String arrayCrop(int startIndex, int endIndex) {
+		if( endIndex<startIndex) {
+			int temp=startIndex;
+			startIndex=endIndex;
+			endIndex=temp;
+		}
+		if(startIndex<0||endIndex>=4) {
+			return "Fail";
+		}
+		if(startIndex==endIndex) {
+			return "Match";
+		}
+		String concatenatedString=concatString(startIndex,endIndex);
+
+		return concatenatedString;
+	}
+	
+
+	public String concatString(int startIndex, int endIndex) {
+		String changedString="";
+		for(;startIndex<endIndex;startIndex++) {
+			changedString+=stringArray[startIndex];
+			changedString+="#";
+		}
+		changedString+=stringArray[startIndex];
+		return changedString;
+	}
+
+	public static void main(String[] args) {
+		SimpleArrays stringArray=new SimpleArrays();
+		String testString1=stringArray.arrayCrop(3, 1);
+		String testString2=stringArray.arrayConcat(3);
+		System.out.println(testString1);
+		System.out.println(testString2);
+	}
+}

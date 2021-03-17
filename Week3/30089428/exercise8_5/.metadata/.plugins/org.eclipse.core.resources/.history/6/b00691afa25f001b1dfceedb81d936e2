@@ -1,0 +1,163 @@
+
+package exercise8_5;
+
+
+
+
+/**
+ * @author Zhifan Li
+ * @version 1.1
+ * @since  1.0
+ *
+ */
+import java.util.Arrays;
+
+public class EightQueens implements Cloneable{
+	private char[][]chessboard;
+
+	public Object clone() throws CloneNotSupportedException{
+		EightQueens newChessboard=(EightQueens)super.clone();
+		
+		newChessboard.chessboard=new char[8][8];
+		for(int i=0;i<8;i++) {
+			for(int j=0;j<8;j++) {
+				newChessboard.chessboard[i][j]=chessboard[i][j];
+			}
+		}
+		return newChessboard;
+	}
+
+
+	public EightQueens() {
+		chessboard=new char[8][8];
+		for(int i=0;i<8;i++) {
+			Arrays.fill(chessboard[i], 'o');
+		}
+	}
+	
+
+	public void getBoard() {
+		for(int i=0;i<8;i++) {
+			for(int j=0;j<8;j++) {
+				if(this.chessboard[i][j]=='Q') {
+					System.out.print("Q ");}
+				else if(this.chessboard[i][j]=='o'){
+					System.out.print("o ");
+
+				}
+			}
+
+			System.out.println("");
+		}
+	}
+
+	public void setQueen(int row,int column) {
+		this.chessboard[row][column]='Q';
+	}
+	public void emptySquare(int row , int column) {
+		this.chessboard[row][column]='o';
+	} 
+	public boolean setQueens(int queensRemaining) {
+		int countQueens=0;
+		for(int i=0;i<8;i++) {
+			for(int j=0;j<8;j++) {
+				if(chessboard[i][j]=='Q') {
+					countQueens++;
+				}
+			}
+		}
+		if((countQueens+queensRemaining)>8||queensRemaining<0) {
+			return false;
+		}
+		
+		recursivePlaceQueens(queensRemaining);
+		missionComplete=0;//reset the default trigger to 0. very important.
+		return true;
+
+	}
+
+
+	static int missionComplete=0;// very important, it is to control if can jump out of the loop and not doing cleanups after finished.
+	
+	private void recursivePlaceQueens(int queensRemaining) {
+
+		
+		if(queensRemaining==0) { 
+			missionComplete=1;
+			return;}
+		for(int i=0;i<8;i++) {
+			for(int j=0;j<8;j++) {
+				if(chessboard[i][j]=='o') {
+					//System.out.println(possibleLocation(i,j));
+					if(possibleLocation(i,j)) {
+						chessboard[i][j]='Q';
+						queensRemaining--;
+
+						recursivePlaceQueens(queensRemaining);
+						if(missionComplete==0) {
+							chessboard[i][j]='o';
+							queensRemaining++;
+						}
+						else if(missionComplete==1) {
+							break;
+						}
+
+					}
+				} 
+			}if(missionComplete==1) {
+					break;}
+		}
+
+		return;	}
+
+
+
+	public boolean possibleLocation(int row,int col) {
+		for(int i=0;i<8;i++) {
+			if(chessboard[row][i]=='Q') {return false;}
+		}
+		for(int j=0;j<8;j++) {
+			if(chessboard[j][col]=='Q') {return false;}
+		}
+		for(int i=0;i<8;i++) {
+			for(int j=0;j<8;j++) {
+				if(chessboard[i][j]=='Q'){
+					if(Math.abs(i-row)==Math.abs(j-col)) {
+						return false;
+					}
+				}
+
+			}
+		}
+		return true;
+
+	}
+
+
+
+	/**
+	 * @param args Optional argument
+	 */
+	public static void main(String[] args)throws CloneNotSupportedException {
+		EightQueens chessboardObject=new EightQueens();
+		chessboardObject.setQueen(0,0);
+		EightQueens a=(EightQueens)chessboardObject.clone();
+		
+		boolean a1=chessboardObject.setQueens(6);
+		chessboardObject.getBoard();
+
+		
+		boolean a2=chessboardObject.setQueens(1);
+		System.out.println(a2);
+	/*	boolean b=chessboardObject.setQueens(7);
+		chessboardObject.getBoard();
+		System.out.println(b);
+*/
+		//a.getBoard();
+		System.out.println("abc");
+
+		//System.out.println(a==chessboardObject);
+		//System.out.println(a.equals(chessboardObject));
+	}
+
+}

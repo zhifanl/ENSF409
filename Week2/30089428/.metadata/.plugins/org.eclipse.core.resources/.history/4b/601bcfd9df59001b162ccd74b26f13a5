@@ -1,0 +1,49 @@
+/**
+@author    Zhifan Li <a href="mailto:zhifan.li@ucalgary.ca">zhifan.li@ucalgary.ca</a>
+@version   1.0
+@since     1.0
+*/
+package exercise5_2;
+
+ public class JavaStrings {
+	 
+	 /**
+	  * 
+	  * @param first first string to be passed to this method
+	  * @param second second string to be passed to this method
+	  * @return the length of the trimmed, concatenated String
+	  */
+	 public int addTogether(String first,String second) {
+		 String firstTrimmed=first.trim();
+		 String secondTrimmed=second.trim();
+		 String finalString=firstTrimmed+secondTrimmed;
+		 return finalString.length();
+	 }
+	 /**
+	  * 
+	  * @param firstName first name of client
+	  * @param lastName last name of client
+	  * @param petName name of pet
+	  * @param year year of birth of the pet
+	  * @return an identifier as a String
+	  */
+	 public String idProcessing(String firstName, String lastName, String petName, int year) {
+		 String id=firstName.charAt(0)+lastName.charAt(0)+petName.charAt(0)+String.valueOf(year);
+		 return id;
+	 }
+	 /**
+	  * 
+	  * @param originalString original String going to be encrypted 
+	  * @return encrypted String
+	  */
+	 public String secretCode(String originalString) {
+		 originalString.replace('a','z');
+		 originalString.replace('e','z');
+		 originalString.replace('i','z');
+		 originalString.replace('o','z');
+		 originalString.replace('u','z');
+		 String secretString=originalString.substring(0,3);
+		 return secretString;
+	 }
+	 
+}

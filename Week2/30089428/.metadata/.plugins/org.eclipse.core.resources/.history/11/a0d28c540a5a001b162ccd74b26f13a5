@@ -1,0 +1,21 @@
+package exercise5_3;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class JavaStrings {
+	public static int count(String myString) {
+	Pattern myPattern=Pattern.compile("e",Pattern.CASE_INSENSITIVE);
+	Matcher myMatcher=myPattern.matcher(myString);
+	int counter=0;
+	while(myMatcher.find()) {
+		counter++;
+	}
+	return counter;
+	}
+	public static void main(String[] args) {
+		String myString="ENSF 409 Principles of Software Development.";
+		int a=count(myString);
+		System.out.println(a);
+	}
+}

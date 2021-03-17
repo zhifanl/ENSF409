@@ -1,0 +1,68 @@
+/**
+@author    Zhifan Li <a href="mailto:zhifan.li@ucalgary.ca">zhifan.li@ucalgary.ca</a>
+@version   1.0
+@since     1.0
+ */
+//This class is for exercise5_2 in ENSF409 assignment 2.
+public class JavaStrings {
+
+	/**
+	 * 
+	 * @param first first string to be passed to this method
+	 * @param second second string to be passed to this method
+	 * @return the length of the trimmed, concatenated String
+	 */
+	public int addTogether(String first,String second) {
+		String firstTrimmed=first.trim();
+		String secondTrimmed=second.trim();
+		String finalString=firstTrimmed+secondTrimmed;
+		return finalString.length();
+	}
+	/**
+	 * 
+	 * @param firstName first name of client
+	 * @param lastName last name of client
+	 * @param petName name of pet
+	 * @param year year of birth of the pet
+	 * @return an identifier as a String
+	 */
+	public String idProcessing(String firstName, String lastName, String petName, int year) {
+		firstName=firstName.trim();
+		lastName=lastName.trim();
+		petName=petName.trim();
+		String id=String.valueOf(firstName.charAt(0))+String.valueOf(lastName.charAt(0));
+		id+=String.valueOf(petName.charAt(0))+String.valueOf(year);
+		return id;
+	}
+	/**
+	 * 
+	 * @param originalString original String going to be encrypted 
+	 * @return secret String 
+	 */
+	public String secretCode(String originalString) {
+		originalString=originalString.trim();
+		String stringTemp=originalString.replace('a','z');
+		stringTemp=stringTemp.replace('e','z');
+		stringTemp= stringTemp.replace('i','z');
+		stringTemp= stringTemp.replace('o','z');
+		stringTemp= stringTemp.replace('u','z');
+		String secretString= stringTemp.substring(0,3);
+		return secretString;
+	}
+	/**
+	 * 
+	 * @param args Ignored command line argument
+	 */
+	public static void main(String[] args) {
+
+		JavaStrings test=new JavaStrings();
+		int addTogether=test.addTogether("   hey   ", "   hello    ");
+		String id=test.idProcessing("Zhifan", "Li", "Mika", 2017);
+		String encrypted=test.secretCode("tomato");
+		System.out.println(addTogether);
+		System.out.println(id);
+		System.out.println(encrypted);
+
+
+	}
+}//End of class declaration.
